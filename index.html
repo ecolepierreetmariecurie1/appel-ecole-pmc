@@ -1496,6 +1496,15 @@ td{
   }
 }
 </style>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1d4ed8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Appel PMC">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+
 </head>
 <body>
 <header>
@@ -1652,7 +1661,7 @@ td{
     <h2>ℹ️ Informations</h2>
     <div class="grid3">
       <div class="kpi"><div style="font-size:30px;margin-bottom:6px">🏫</div><b>École Pierre et Marie Curie</b><br><span class="small">Application d’appel</span></div>
-      <div class="kpi"><div style="font-size:30px;margin-bottom:6px">📱</div><b>Version 5.0</b><br><span class="small">• Import ONDE rétabli<br>• Onglet Appel amélioré<br>• Icônes actives en surbrillance<br>• Effectif réel affiché</span></div>
+      <div class="kpi"><div style="font-size:30px;margin-bottom:6px">📱</div><b>Version 5.2</b><br><span class="small">• Import ONDE rétabli<br>• Onglet Appel amélioré<br>• Icônes actives en surbrillance<br>• Effectif réel affiché</span></div>
       <div class="kpi"><div style="font-size:30px;margin-bottom:6px">👥</div><b id="infoCounts">—</b><br><span class="small">Élèves actifs / classes</span></div>
     </div>
   </div>
@@ -1681,12 +1690,12 @@ td{
   <button onclick="showView('eleves',this)"><span class="navIcon pupils">👥</span><span>Élèves</span></button>
   <button onclick="showView('stats',this)"><span class="navIcon stats">📊</span><span>Stats</span></button>
   <button onclick="showView('settings',this)"><span class="navIcon settings">⚙️</span><span>Réglages</span></button>
-<div class="navVersionReal">Version 5.0</div>
+<div class="navVersionReal">Version 5.2</div>
 </div>
 <div class="version" style="display:none">v4.5.1</div>
 
 <script>
-const VERSION="5.0"
+const VERSION="5.2"
 const STORE="pmc_appel_v1";
 const TODAY=new Date().toISOString().slice(0,10);
 
@@ -2668,5 +2677,14 @@ function importONDE(){
 }
 
 </script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js").catch(console.warn);
+  });
+}
+</script>
+
 </body>
 </html>
